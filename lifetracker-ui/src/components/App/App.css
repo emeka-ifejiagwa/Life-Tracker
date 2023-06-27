@@ -4,5 +4,9 @@
   width: 100%;
   max-width: 100vw;
   min-height: 100vh;
-  background: #f7fafc;
+  height: 100%;
+  background: black;
+  margin: 0;
+  padding: 0;
+  background-color: var(--base-bg-color);
 }

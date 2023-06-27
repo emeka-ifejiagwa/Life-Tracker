@@ -1,0 +1,11 @@
+:root{
+    --button-color: rgb(2, 41, 141);
+    --base-bg-color: rgb(33, 35, 42);
+}
+
+body{
+    background-color: var(--base-bg-color);
+    margin: 0px;
+    padding: 0px;
+    font-size: 20px;
+}
