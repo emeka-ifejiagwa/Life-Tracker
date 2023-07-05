@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "./LoginForm.css";
-import { BiLogIn } from "react-icons/bi";
-import { IconContext } from "react-icons";
 import axios from "axios";
 import FormErrorMessage from "../../FormErrorMessage/FormErrorMessage";
-import { useNavigate } from "react-router-dom";
+import { BiLogIn } from "react-icons/bi";
+import { IconContext } from "react-icons";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function LoginForm() {
+export default function LoginForm({setIsLoggedIn}) {
   const [loginDetails, setLoginDetails] = useState({
     email: "",
     password: "",
@@ -24,15 +24,17 @@ export default function LoginForm() {
     setErrorMessage("")
   };
 
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const result = await axios.post(url, loginDetails);
-      setLoginDetails({ email: "", password: "" });
       setErrorMessage("")
-      // setIsActive(true);
       navigate("/")
+      setIsLoggedIn(true)
+      setLoginDetails({ email: "", password: "" });
     } catch (error) {
+      console.error(error)
       setErrorMessage(error.response.data.message);
     }
   };
@@ -81,6 +83,7 @@ export default function LoginForm() {
           </button>
         </div>
       </form>
+      <p className="prompt">Don't have an account? <Link to="/register" className="prompt-action">Register Now</Link></p>
     </div>
-  );
+  )
 }

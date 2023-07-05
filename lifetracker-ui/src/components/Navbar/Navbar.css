@@ -4,16 +4,16 @@
   width: 100%;
   position: fixed;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   top: 0;
-  padding: .5%;
+  left: 0;
 }
 
 
-.sign-up-in{
-  width: 25%;
-  height: 85%;
+.auth-area{
+  width: 15%;
+  height: 80%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -21,7 +21,7 @@
 
 .auth-link{
   min-width: max-content;
-  width: 35%;
+  width: 40%;
   height: 85%;
   font-size: 1.15rem; 
   vertical-align: middle;

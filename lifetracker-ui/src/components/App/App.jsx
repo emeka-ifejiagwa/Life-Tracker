@@ -1,29 +1,29 @@
 import Navbar from "../Navbar/Navbar";
 import Home from "../Home/Home";
 import "./App.css";
-import RegistrationPage from "../Auth-Components/RegistrationPage/RegistrationPage";
+import RegistrationPage from "../Auth-Components/RegistrationPage/RegistrationPage/RegistrationPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import LoginPage from "../Auth-Components/LoginPage/LoginPage";
+import LoginPage from "../Auth-Components/Login/LoginPage/LoginPage";
 
 function App() {
-  const [isActive, setIsActive] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
+        <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
         <Routes>
           <Route
             path="/"
-            element={<Home isActive={isActive} setIsActive={setIsActive} />}
+            element={<Home isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}
           />
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/login" element={<LoginPage setIsLoggedIn={setIsLoggedIn}/>} />
           <Route
             path="/register"
             element={
               <RegistrationPage
-              setIsActive={setIsActive}
+              setIsLoggedIn={setIsLoggedIn}
               />
             }
           />

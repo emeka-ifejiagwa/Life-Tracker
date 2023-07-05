@@ -3,9 +3,10 @@ import "./RegistrationForm.css";
 import { ImUserPlus } from "react-icons/im";
 import { IconContext } from "react-icons";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function RegistrationForm({
-  setIsActive
+  setIsLoggedIn
 }) {
   const [registrationInfo, setRegistrationInfo] = useState({
     firstName: "",
@@ -37,7 +38,7 @@ export default function RegistrationForm({
         password: "",
         passwordConfirm: "",
       });
-      setIsActive(true);
+      setIsLoggedIn(true);
     }
   };
 
@@ -128,6 +129,7 @@ export default function RegistrationForm({
           </button>
         </div>
       </form>
+      <p className="prompt">Already have an account? <Link to="/login" className="prompt-action">Log in</Link></p>
     </div>
   );
 }
