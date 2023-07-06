@@ -1,23 +1,40 @@
 const db = require("../db");
 const bcrypt = require("bcrypt");
 const { UnauthorizedError } = require("../utils/errors");
+const {generateToken} = require("../utils/tokens")
+require("colors");
 require("dotenv").config({ path: "./.env" });
 class User {
     constructor() {}
-    static async login(user) {
+    static async fetchUserByEmail(email) {
         const query = "SELECT * from users WHERE email=$1;";
-        const result = await db.query(query, [user.email.toLowerCase()]);
+        return await db.query(query, [email.toLowerCase()]);
+    }
+
+    static async login(user) {
+        const result = await this.fetchUserByEmail(user.email)
+        // if we were unable to fetch from the database
+        if(!result){
+            throw new Error("an error occured")
+        }
+        // if there is no matching email
         if (result.rowCount === 0) {
             throw new UnauthorizedError("email does not exist");
         }
+        // if the password does match
         if (await bcrypt.compare(user.password, result.rows[0].password)) {
-            console.log("Successful Login");
+            console.log("Successful Login".green);
+            return result.rows[0]
         } else {
             throw new UnauthorizedError("email and password does not match");
         }
     }
 
     static async register(user) {
+        // TODO handle errors
+        if(user.password !== user.passwordConfirm){
+            throw new UnauthorizedError("passwords do not match")
+        }
         const salt = await bcrypt.genSalt(
             parseInt(process.env.BCRYPT_WORK_FACTOR)
         );
@@ -33,7 +50,6 @@ class User {
         ]);
         return result.rows[0];
     }
-    static fetchUserByEmail() {}
 }
 
 module.exports = User;

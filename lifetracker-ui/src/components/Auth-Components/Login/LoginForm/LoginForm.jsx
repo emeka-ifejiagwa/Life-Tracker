@@ -6,7 +6,7 @@ import { BiLogIn } from "react-icons/bi";
 import { IconContext } from "react-icons";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function LoginForm({setIsLoggedIn}) {
+export default function LoginForm({appState, setAppState}) {
   const [loginDetails, setLoginDetails] = useState({
     email: "",
     password: "",
@@ -30,11 +30,20 @@ export default function LoginForm({setIsLoggedIn}) {
     try {
       const result = await axios.post(url, loginDetails);
       setErrorMessage("")
-      navigate("/")
-      setIsLoggedIn(true)
       setLoginDetails({ email: "", password: "" });
+      localStorage.setItem("lifetracker_token", result.data.token)
+      setAppState(appState => {return {...appState, user: {...result.data.user}, token: result.data.token, isAuthenticated: true}})
+      navigate("/")
     } catch (error) {
       console.error(error)
+      setAppState({
+        user: {},
+        token: localStorage.getItem("lifetracker_token"),
+        isAuthenticated: false,
+        nutrition: [],
+        sleep: [],
+        exercise: [],
+      })
       setErrorMessage(error.response.data.message);
     }
   };

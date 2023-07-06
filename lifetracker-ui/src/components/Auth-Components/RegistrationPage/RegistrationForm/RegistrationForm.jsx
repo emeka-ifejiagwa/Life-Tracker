@@ -4,6 +4,7 @@ import { ImUserPlus } from "react-icons/im";
 import { IconContext } from "react-icons";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import FormErrorMessage from "../../FormErrorMessage/FormErrorMessage";
 
 export default function RegistrationForm({
   setIsLoggedIn
@@ -16,6 +17,7 @@ export default function RegistrationForm({
     password: "",
     passwordConfirm: "",
   });
+  const [errorMessage, setErrorMessage] = useState(""); // handles input validation message
 
   const url = `http://localhost:3001/auth/register`;
 
@@ -24,12 +26,13 @@ export default function RegistrationForm({
       ...registrationInfo,
       [event.target.name]: event.target.value,
     });
+    setErrorMessage("")
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const result = await axios.post(url, registrationInfo);
-    if (result.status === 200) {
+    try {
+      const result = await axios.post(url, registrationInfo);
       setRegistrationInfo({
         firstName: "",
         lastName: "",
@@ -39,6 +42,10 @@ export default function RegistrationForm({
         passwordConfirm: "",
       });
       setIsLoggedIn(true);
+      setErrorMessage("")
+    } catch(error){
+      console.error(error)
+      setErrorMessage(error.response.data.message);
     }
   };
 
@@ -124,6 +131,9 @@ export default function RegistrationForm({
               required
             />
           </div>
+          {errorMessage !== "" ? (
+            <FormErrorMessage message={errorMessage} />
+          ) : null}
           <button type="submit" className="auth-btn">
             Create Account
           </button>
