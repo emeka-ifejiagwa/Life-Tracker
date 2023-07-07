@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import FormErrorMessage from "../../Auth-Components/FormErrorMessage/FormErrorMessage";
 import axios from "axios";
 
-export default function NutritionForm({appState, setAppState}) {
+export default function NutritionForm({ appState, setAppState }) {
   const [nutritionData, setNutritionData] = useState({
     name: "",
     calories: 1,
@@ -13,7 +13,7 @@ export default function NutritionForm({appState, setAppState}) {
   });
 
   const [errorMessage, setErrorMessage] = useState(""); // handles input validation message
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const url = `http://localhost:3001/nutrition`;
 
@@ -22,38 +22,44 @@ export default function NutritionForm({appState, setAppState}) {
       ...nutritionData,
       [event.target.name]: event.target.value,
     });
-    setErrorMessage("")
+    setErrorMessage("");
   };
 
-  
   const handleSubmit = async (event) => {
-    console.log(nutritionData)
     event.preventDefault();
     try {
-      const result = await axios.post(url, {nutrition: nutritionData}, {
-        headers: {
-          authorization: "Bearer " + localStorage.getItem("lifetracker_token"),
-        },
-      });
-      setErrorMessage("")
+      const result = await axios.post(
+        url,
+        { nutrition: nutritionData },
+        {
+          headers: {
+            authorization:
+              "Bearer " + localStorage.getItem("lifetracker_token"),
+          },
+        }
+      );
+      setErrorMessage("");
       setNutritionData({
         name: "",
         calories: 1,
         imageUrl: "",
         category: "",
       });
-    //   setAppState(appState => {return {...appState, user: {...result.data.user}, token: result.data.token, isAuthenticated: true}})
-    //   navigate("/activity")
+      setAppState((appState) => {
+        return { ...appState, nutritions: [...appState.nutritions, result.data]};
+      });
+        navigate("/nutrition")
     } catch (error) {
-      console.error(error)
-    //   setAppState({
-    //     user: {},
-    //     token: null,
-    //     isAuthenticated: false,
-    //     nutrition: [],
-    //     sleep: [],
-    //     exercise: [],
-    //   })
+      localStorage.clear();
+      console.error(error);
+      setAppState({
+        user: {},
+        token: null,
+        isAuthenticated: false,
+        nutrition: [],
+        sleep: [],
+        exercise: [],
+      });
       setErrorMessage(error.response.data.message);
     }
   };
@@ -68,9 +74,9 @@ export default function NutritionForm({appState, setAppState}) {
             className="long-input-box"
             type="text"
             placeholder="Name of meal"
-              onChange={handleChange}
+            onChange={handleChange}
             name="name"
-              value={nutritionData.name}
+            value={nutritionData.name}
             required
           />
         </div>
@@ -80,9 +86,9 @@ export default function NutritionForm({appState, setAppState}) {
             className="long-input-box"
             type="number"
             placeholder="1"
-              onChange={handleChange}
+            onChange={handleChange}
             name="calories"
-              value={nutritionData.calories}
+            value={nutritionData.calories}
             required
           />
         </div>
@@ -91,9 +97,9 @@ export default function NutritionForm({appState, setAppState}) {
           <select
             className="long-input-box"
             placeholder="Username"
-              onChange={handleChange}
+            onChange={handleChange}
             name="category"
-              value={nutritionData.category}
+            value={nutritionData.category}
             required
             style={{ appearance: "none" }}
           >
@@ -113,15 +119,14 @@ export default function NutritionForm({appState, setAppState}) {
             className="long-input-box"
             type="text"
             placeholder="https://www.image.com"
-              onChange={handleChange}
+            onChange={handleChange}
             name="imageUrl"
-              value={nutritionData.imageUrl}
-            required
+            value={nutritionData.imageUrl}
           />
         </div>
         {errorMessage !== "" ? (
-            <FormErrorMessage message={errorMessage} />
-          ) : null}
+          <FormErrorMessage message={errorMessage} />
+        ) : null}
         <button type="submit" className="auth-btn nutrition-save">
           Save
         </button>

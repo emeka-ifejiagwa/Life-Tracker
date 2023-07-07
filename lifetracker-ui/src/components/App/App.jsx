@@ -21,7 +21,7 @@ function App() {
     token: localStorage.getItem("lifetracker_token"),
     // if we still have our token, we are still authenticated
     isAuthenticated: Boolean(localStorage.getItem("lifetracker_token")),
-    nutrition: [],
+    nutritions: [],
     sleep: [],
     exercise: [],
   });

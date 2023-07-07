@@ -1,36 +1,10 @@
 const db = require("../db");
 const bcrypt = require("bcrypt");
 const { UnauthorizedError, BadRequestError } = require("../utils/errors");
-const { generateToken } = require("../utils/tokens");
 require("colors");
 require("dotenv").config({ path: "./.env" });
 class User {
-  static users = {}; // this would allow us to store the list of users [id: [nutrition]]
-
-  static async fetchNutrition(id) {
-    try{
-        return this.users[parseInt(id)];
-    }catch{
-        throw new BadRequestError("invalid user id")
-    }
-  }
-
-  static async addNutrition(id, nutritionData) {
-    // validate nutrition data
-    if (
-      Object.keys(nutritionData).length !== 4 ||
-      Object.keys(nutritionData).some((field) => nutritionData.field)
-    )
-      throw new BadRequestError("some required fields are missing");
-
-    // if id new, create new entry
-    // else extend the already existing one
-    id in this.users
-      ? this.users[parseInt(id)].push(nutritionData)
-      : (this.users[id] = [nutritionData]);
-    return { nutrition: nutritionData };
-  }
-
+  
   static async fetchUserByEmail(email) {
     const query = "SELECT * from users WHERE email=$1;";
     return await db.query(query, [email.toLowerCase()]);

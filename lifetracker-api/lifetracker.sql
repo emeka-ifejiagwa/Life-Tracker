@@ -7,4 +7,5 @@ CREATE DATABASE lifetracker;
 \connect lifetracker;
 
 \i lifetracker-schema.sql
+\i nutrition-schema.sql
 

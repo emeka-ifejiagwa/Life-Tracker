@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 
 export default function RegistrationPage({appState, setAppState}){
     const navigate = useNavigate()
-    console.log(appState.isAuthenticated)
     if(appState.isAuthenticated) {navigate("/activity")}
     else return (
         <div className="registration-page">
