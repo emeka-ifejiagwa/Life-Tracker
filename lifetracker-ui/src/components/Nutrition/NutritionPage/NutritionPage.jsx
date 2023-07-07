@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./NutritionPage.css";
 import { Route, Routes } from "react-router-dom";
 import NutritionOverview from "../NutritionOverview/NutritionOverview";
@@ -9,7 +9,7 @@ import PageBanner from "../../PageBanner/PageBanner";
 export default function NutritionPage({ appState, setAppState }) {
   return appState.isAuthenticated ? (
     <div className="nutrition-page">
-      <PageBanner text="Nutrition" bgColor="#B686F8" />
+      <PageBanner text="Nutrition" bgColor="var(--nutrition-color)" />
       <Routes>
         <Route
           path="/"
@@ -32,6 +32,6 @@ export default function NutritionPage({ appState, setAppState }) {
       </Routes>
     </div>
   ) : (
-    <p> Please register or log in</p>
+    <p className="activity"> Please register or log in</p>
   );
 }

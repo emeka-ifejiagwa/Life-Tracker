@@ -1,16 +1,20 @@
 .tiles {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    gap: 20px;
-  }
-  
-  .activity{
-    display: flex;
+  /* display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 20px; */
+}
+
+.activity{
+    padding-top: 3.5rem;
+    text-decoration: none;
+    color: white;
+    width: 90%;
+    /* display: flex;
     width: 100%;
     min-height: 100vh;
     color: white;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
   }
   

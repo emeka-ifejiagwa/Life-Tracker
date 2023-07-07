@@ -1,4 +1,4 @@
-import React from 'react'
+
 import "./PageBanner.css"
 
 export default function PageBanner({text, bgColor}) {

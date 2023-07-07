@@ -41,7 +41,7 @@ export default function LoginForm({appState, setAppState}) {
         user: {},
         token: null,
         isAuthenticated: false,
-        nutrition: [],
+        nutritions: [],
         sleep: [],
         exercise: [],
       })

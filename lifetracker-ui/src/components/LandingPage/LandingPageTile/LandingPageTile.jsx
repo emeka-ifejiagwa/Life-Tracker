@@ -1,4 +1,4 @@
-import React from 'react'
+
 import "./LandingPageTile.css"
 
 export default function LandingPageTile({text, img}) {

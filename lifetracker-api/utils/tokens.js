@@ -9,7 +9,7 @@ function generateToken(user) {
     email: user.email,
     name: user.firstName + " " + user.lastName,
   };
-  return jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: '1hr' });
+  return jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: '1h'});
 }
 
 function verifyToken(token) {

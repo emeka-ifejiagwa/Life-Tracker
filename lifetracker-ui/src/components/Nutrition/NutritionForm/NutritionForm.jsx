@@ -46,7 +46,7 @@ export default function NutritionForm({ appState, setAppState }) {
         category: "",
       });
       setAppState((appState) => {
-        return { ...appState, nutritions: [...appState.nutritions, result.data]};
+        return { ...appState, nutritions: [...appState.nutritions, result.data.nutrition]};
       });
         navigate("/nutrition")
     } catch (error) {
@@ -56,7 +56,7 @@ export default function NutritionForm({ appState, setAppState }) {
         user: {},
         token: null,
         isAuthenticated: false,
-        nutrition: [],
+        nutritions: [],
         sleep: [],
         exercise: [],
       });

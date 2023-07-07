@@ -5,5 +5,6 @@ CREATE TABLE nutrition(
     category varchar(255) NOT NULL,
     calories BIGINT NOT NULL,
     imageurl varchar(255),
+    createdat timestamp without time zone default CURRENT_TIMESTAMP,
     PRIMARY KEY(nutritionid) 
 );

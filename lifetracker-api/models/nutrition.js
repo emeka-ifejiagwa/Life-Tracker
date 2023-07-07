@@ -6,9 +6,15 @@ require("dotenv").config({ path: "./.env" });
 
 class Nutrition {
   static async fetchUserNutritionData(userId) {
-    const query = "SELECT * FROM nutrition WHERE userid = $1;"
+    const query = "SELECT * FROM nutrition WHERE userid = $1 ORDER BY createdat DESC;"
     const userNutrition = await db.query(query, [userId])
     return {nutritions: userNutrition.rows}
+  }
+
+  static async fetchAvgDailyCalories(userId){
+    const userNutritionData = (await this.fetchUserNutritionData(userId)).nutritions
+    if(userNutritionData.length === 0) return 0
+    // const today = 
   }
 
   static async addNutrition(userId, nutritionData) {

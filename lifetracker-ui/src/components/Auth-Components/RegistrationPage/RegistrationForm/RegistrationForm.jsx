@@ -53,7 +53,7 @@ export default function RegistrationForm({
         user: {},
         token: null,
         isAuthenticated: false,
-        nutrition: [],
+        nutritions: [],
         sleep: [],
         exercise: [],
       })

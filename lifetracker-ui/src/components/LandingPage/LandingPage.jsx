@@ -1,4 +1,4 @@
-import React from 'react'
+
 import "./LandingPage.css"
 import Hero from './Hero/Hero'
 import LandingPageTile from './LandingPageTile/LandingPageTile'
