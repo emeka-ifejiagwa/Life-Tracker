@@ -1,7 +1,9 @@
-.NutritionPage {
-  background: #f7fafc;
+.nutrition-page {
+  width: 100%;
+  min-height: 100vh;
 }
-.NutritionPage .nutrition-feed {
+
+.nutrition-page .nutrition-feed {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -11,9 +13,9 @@
 .white {
   color: white;
 }
-.NutritionPage .button {
+.nutrition-page.button {
   display: flex;
 }
-.NutritionPage .button button {
+.nutrition-page .button button {
   flex: 1;
 }

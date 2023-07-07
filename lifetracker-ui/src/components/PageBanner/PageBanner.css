@@ -1,0 +1,8 @@
+.page-banner{
+    width: 100%;
+    padding-top: 3.5rem; /* height of the nav bar*/
+    height: 20rem;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}

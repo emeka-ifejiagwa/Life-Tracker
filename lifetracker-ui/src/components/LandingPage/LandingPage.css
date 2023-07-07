@@ -1,0 +1,19 @@
+.landing-page {
+  width: 80%;
+  min-height: 100vh;
+  height: max-content;
+}
+
+.services{
+    display: flex;
+    justify-content: space-between;
+    margin: 5rem 0rem;
+}
+
+
+
+@media screen and (max-width: 680px) {
+  .landing-page {
+    width: 100vw;
+  }
+}

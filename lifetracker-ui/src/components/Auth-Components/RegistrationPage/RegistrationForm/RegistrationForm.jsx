@@ -3,11 +3,11 @@ import "./RegistrationForm.css";
 import { ImUserPlus } from "react-icons/im";
 import { IconContext } from "react-icons";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FormErrorMessage from "../../FormErrorMessage/FormErrorMessage";
 
 export default function RegistrationForm({
-  setIsLoggedIn
+  setAppState
 }) {
   const [registrationInfo, setRegistrationInfo] = useState({
     firstName: "",
@@ -18,6 +18,7 @@ export default function RegistrationForm({
     passwordConfirm: "",
   });
   const [errorMessage, setErrorMessage] = useState(""); // handles input validation message
+  const navigate = useNavigate()
 
   const url = `http://localhost:3001/auth/register`;
 
@@ -33,6 +34,7 @@ export default function RegistrationForm({
     event.preventDefault();
     try {
       const result = await axios.post(url, registrationInfo);
+      setErrorMessage("")
       setRegistrationInfo({
         firstName: "",
         lastName: "",
@@ -41,10 +43,20 @@ export default function RegistrationForm({
         password: "",
         passwordConfirm: "",
       });
-      setIsLoggedIn(true);
-      setErrorMessage("")
+      localStorage.setItem("lifetracker_token", result.data.token)
+      setAppState(appState => {return {...appState, user: {...result.data.user}, token: result.data.token, isAuthenticated: true}})
+      navigate("/activity")
     } catch(error){
       console.error(error)
+      localStorage.clear()
+      setAppState({
+        user: {},
+        token: null,
+        isAuthenticated: false,
+        nutrition: [],
+        sleep: [],
+        exercise: [],
+      })
       setErrorMessage(error.response.data.message);
     }
   };

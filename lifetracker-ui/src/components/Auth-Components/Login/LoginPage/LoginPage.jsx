@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function LoginPage({appState, setAppState}) {
     const navigate = useNavigate()
-    if(appState.isAuthenticated) {navigate("/")}
+    if(appState.isAuthenticated) {navigate("/activity")}
     else{
         return (
             <div className="login-page">

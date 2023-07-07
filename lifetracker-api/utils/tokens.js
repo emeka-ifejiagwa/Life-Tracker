@@ -9,7 +9,7 @@ function generateToken(user) {
     email: user.email,
     name: user.firstName + " " + user.lastName,
   };
-  return jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: 60 });
+  return jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: '1hr' });
 }
 
 function verifyToken(token) {
@@ -17,7 +17,7 @@ function verifyToken(token) {
     return { message: `token not a string, its a ${typeof token}` };
   if (!token) throw new UnauthorizedError("user is not authorized", 403);
 
-  const verified = jwt.verify(token, process.env.SECRET_KEY, (error, user) => {
+  jwt.verify(token, process.env.SECRET_KEY, (error, user) => {
     if (error) {
       throw new UnauthorizedError("user is not authorized", 403);
     }

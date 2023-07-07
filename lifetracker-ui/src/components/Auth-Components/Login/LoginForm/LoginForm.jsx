@@ -33,12 +33,13 @@ export default function LoginForm({appState, setAppState}) {
       setLoginDetails({ email: "", password: "" });
       localStorage.setItem("lifetracker_token", result.data.token)
       setAppState(appState => {return {...appState, user: {...result.data.user}, token: result.data.token, isAuthenticated: true}})
-      navigate("/")
+      navigate("/activity")
     } catch (error) {
+      localStorage.clear()
       console.error(error)
       setAppState({
         user: {},
-        token: localStorage.getItem("lifetracker_token"),
+        token: null,
         isAuthenticated: false,
         nutrition: [],
         sleep: [],

@@ -1,0 +1,16 @@
+.tiles {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+  }
+  
+  .activity{
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    color: white;
+    align-items: center;
+    justify-content: center;
+  }
+  

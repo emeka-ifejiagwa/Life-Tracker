@@ -1,0 +1,22 @@
+.lp-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lp-tile-text {
+  color: white;
+  font-size: 2rem;
+}
+
+.lp-tile-img {
+  width: 12rem;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 1rem;
+  transition: transform .5s ease-in-out;
+}
+
+.lp-tile-img:hover {
+    transform: scale(1.1);
+}

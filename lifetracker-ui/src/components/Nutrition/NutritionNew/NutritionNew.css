@@ -1,0 +1,7 @@
+.nutrition-new{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc(110vh - 23.5rem) /* full screen - height of banner*/
+}

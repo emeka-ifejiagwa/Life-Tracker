@@ -1,12 +1,15 @@
 import React from "react";
 import "./RegistrationPage.css"
 import RegistrationForm from "../RegistrationForm/RegistrationForm";
+import { useNavigate } from "react-router-dom";
 
-export default function RegistrationPage({setIsLoggedIn, registrationInfo, setRegistrationInfo}){
-    return (
+export default function RegistrationPage({appState, setAppState}){
+    const navigate = useNavigate()
+    console.log(appState.isAuthenticated)
+    if(appState.isAuthenticated) {navigate("/activity")}
+    else return (
         <div className="registration-page">
-             <RegistrationForm registrationInfo={registrationInfo}
-                setRegistrationInfo={setRegistrationInfo} setIsLoggedIn={setIsLoggedIn}/>
+             <RegistrationForm appState={appState} setAppState={setAppState}/>
         </div>
     )
 }

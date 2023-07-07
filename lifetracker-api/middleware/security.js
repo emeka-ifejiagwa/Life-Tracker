@@ -7,11 +7,12 @@ function authenticateToken(req, res, next) {
   */
   const token = req.headers.authorization?.split(" ")[1];
   try{
-    res.locals.payLoad = verifyToken(token)
-    next()
+    res.locals.payload = verifyToken(token)
   }catch(error){
-    res.locals.error = error
+    res.locals.payload = {}
+  }finally{
+    next()
   }
 }
 
-module.exports = { authenticateToken}
+module.exports = { authenticateToken }
