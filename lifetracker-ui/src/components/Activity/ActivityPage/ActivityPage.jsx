@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./ActivityPage.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import ActivityFeed from "../Activity Feed/ActivityFeed";
 
@@ -35,11 +35,17 @@ export default function ActivityPage({ appState, setAppState }) {
 
   return appState.isAuthenticated ? (
     <Link to="/activity" className="activity">
+      <div className="activity-header">
       <h4 style={{lineHeight: "100%"}}>Activity Feed</h4>
+      <Link to="/nutrition/create" className="add-nutrition-link" style={{width: "auto"}}>
+        <button className="add-nutrition" style={{width: "10rem"}}>Record Nutrition</button>
+      </Link>
+      </div>
       <ActivityFeed avgDailyCalories={activityData.nutritionActivity?.avgDailyCalories}
-      totalCaloriesPerDay={activityData.nutritionActivity?.totalDailyCalories} />
+      totalCaloriesPerDay={activityData.nutritionActivity?.totalDailyCalories} 
+      subNutritionStats={activityData.nutritionActivity?.subStats}/>
     </Link>
   ) : (
-    <p className="activity">Not authotized</p>
+    <p className="activity">Please register or log in</p>
   );
 }

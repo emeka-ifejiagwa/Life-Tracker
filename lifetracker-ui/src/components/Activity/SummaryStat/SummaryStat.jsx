@@ -1,6 +1,6 @@
 import "./SummaryStat.css"
 
-export default function SummaryStat({stats, label, substat, bgColor="var(--nutrition-color"}) {
+export default function SummaryStat({stats, label, substat, bgColor="var(--nutrition-color)"}) {
   return (
     <>
     

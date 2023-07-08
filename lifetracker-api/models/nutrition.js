@@ -23,8 +23,25 @@ class Nutrition {
       }
       return acc
     }, 0)
-    return {totalDailyCalories: total, avgDailyCalories: total/count}
-    
+    return {totalDailyCalories: total, avgDailyCalories: total/count} 
+  }
+
+  static async fetchFavNutrition(userId){
+    const query = "Select name, COUNT (name) as freq FROM nutrition WHERE userid = $1 GROUP BY name ORDER BY freq DESC LIMIT 1;"
+    const result = await db.query(query, [userId])
+    return {subStatText:"Most Frequent Meal", subStat: result.rows[0]?.name}
+  }
+  
+  static async fetchMaxCaloriesInOneMeal(userId){
+    const query = "Select MAX (calories) FROM nutrition WHERE userid = $1 LIMIT 1;"
+    const result = await db.query(query, [userId])
+    return {subStatText: "Max Calories in One Meal", subStat: parseFloat(result.rows[0].max).toFixed(1)}
+  }
+  
+  static async fetchAvgCalories(userId){
+    const query = "Select AVG (calories) FROM nutrition WHERE userid = $1;"
+    const result = await db.query(query, [userId])
+    return {subStatText: "Average Calories", subStat: parseFloat(result.rows[0].avg).toFixed(1)}
   }
 
   static async addNutrition(userId, nutritionData) {

@@ -42,4 +42,7 @@
   position: relative;
 }
 
-
+.logo{
+  height: 100%;
+  padding: 0;
+}

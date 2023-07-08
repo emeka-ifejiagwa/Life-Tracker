@@ -40,6 +40,6 @@ export default function NutritionOverview({ appState, setAppState }) {
       <NutritionFeed nutritions={appState.nutritions} />
     </div>
   ) : (
-    <p className="activity">Not authotized</p>
+    <p className="activity">Please register or log in</p>
   );
 }

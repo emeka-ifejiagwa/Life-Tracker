@@ -3,5 +3,12 @@
     text-decoration: none;
     color: white;
     width: 90%;
+    cursor: default;
   }
+
+  .activity-header{
+    display: flex;
+    justify-content: space-between;
+  }
+
   

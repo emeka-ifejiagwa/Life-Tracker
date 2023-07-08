@@ -1,3 +1,4 @@
+import MoreStats from "../SummaryStat/MoreStats/MoreStats";
 import SummaryStat from "../SummaryStat/SummaryStat";
 import "./ActivityFeed.css";
 
@@ -5,6 +6,7 @@ export default function ActivityFeed({
   totalCaloriesPerDay,
   avgCaloriesPerCategory,
   avgDailyCalories,
+  subNutritionStats
 }) {
   return (
     <div className="activity-feed">
@@ -17,6 +19,7 @@ export default function ActivityFeed({
         label={"Total Calories Per Day"}
         stats={totalCaloriesPerDay?.toFixed(1)}
       />
+      <MoreStats subStatsList={subNutritionStats}/>
     </div>
   );
 }

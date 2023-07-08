@@ -9,10 +9,10 @@ activityRouter.get("/", authenticateToken, async (req, res) => {
         if(Object.keys(payload).length === 0) res.status(403).send({error: "Unable to verify token"})
         else{
            const result = await Activity.fetchActivityInfo(payload.id)
-        //    console.log(result)
             res.status(201).send(result)
         }
     }catch(error){
+        console.error(error)
         res.status(error.status).send(error.message)
     }
 })

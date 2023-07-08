@@ -1,10 +1,15 @@
 .activity-feed{
     text-decoration: none;
     width: 100%;
-    display: inline-grid;
+    display: grid;
     grid-template-columns: repeat(2, minmax(0px, 1fr));
     row-gap: 5rem;
     column-gap: 5rem;
-    /* grid-template-rows: repeat(5 1fr); */
-    /* grid-template-rows: 1fr 1fr; */
+    height: max-content;
+}
+
+@media screen and (max-width: 900px) {
+    .activity-feed{
+        grid-template-columns: repeat(1, minmax(0px, 1fr));
+    }
 }

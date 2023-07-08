@@ -1,0 +1,15 @@
+.substats-table{
+    width: 100%;
+    font-size: 1.2rem;
+    height: 100%;
+    margin-bottom: 3%;
+    margin-top: 1.9ch;
+}
+
+.substats-header{
+    vertical-align: top;
+    width: 2rem;
+    table-layout: fixed;
+    padding-bottom: 1ch;
+    font-weight: 500;
+}

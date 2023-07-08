@@ -3,7 +3,6 @@ import "./NutritionFeed.css"
 import NutritionCard from '../../NutritionCard/NutritionCard'
 
 export default function NutritionFeed({nutritions}) {
-  console.log(nutritions)
   return (
     <div className='nutrition-feed'>
       {!nutritions || nutritions.length === 0 ? 
