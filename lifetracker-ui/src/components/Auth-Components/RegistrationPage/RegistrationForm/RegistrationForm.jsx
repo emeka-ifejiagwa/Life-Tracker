@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import "./RegistrationForm.css";
 import { ImUserPlus } from "react-icons/im";
 import { IconContext } from "react-icons";

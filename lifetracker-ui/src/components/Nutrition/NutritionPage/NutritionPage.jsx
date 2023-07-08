@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import "./NutritionPage.css";
 import { Route, Routes } from "react-router-dom";
 import NutritionOverview from "../NutritionOverview/NutritionOverview";

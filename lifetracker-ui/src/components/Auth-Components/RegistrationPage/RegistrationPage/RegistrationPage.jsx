@@ -1,4 +1,3 @@
-import React from "react";
 import "./RegistrationPage.css"
 import RegistrationForm from "../RegistrationForm/RegistrationForm";
 import { useNavigate } from "react-router-dom";

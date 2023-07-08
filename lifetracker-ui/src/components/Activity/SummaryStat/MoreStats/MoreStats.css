@@ -1,6 +1,6 @@
 .substats-table{
     width: 100%;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     height: 100%;
     margin-bottom: 3%;
     margin-top: 1.9ch;
@@ -11,5 +11,10 @@
     width: 2rem;
     table-layout: fixed;
     padding-bottom: 1ch;
-    font-weight: 500;
+    font-weight: normal;
+}
+
+.substats-data{
+    font-weight: bold;
+    font-size: 2rem
 }

@@ -1,4 +1,3 @@
-import React from "react";
 import "./NutritionCard.css";
 
 export default function NutritionCard({ nutrition }) {
