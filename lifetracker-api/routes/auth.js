@@ -10,6 +10,7 @@ authRouter.post("/register", async (req, res) => {
     delete user.password
     res.status(200).json({user, token});
   } catch (error) {
+    console.error(error)
     res.status(401).send({ message: error.message });
   }
 });
