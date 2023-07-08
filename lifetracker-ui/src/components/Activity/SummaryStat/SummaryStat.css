@@ -1,0 +1,30 @@
+.summary-stat {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--nutrition-color);
+  /* height: 10rem; */
+  width: 100%;
+  box-sizing: border-box;
+  align-items: flex-start;
+  padding: 0 5%;
+  box-sizing: border-box;
+  border-radius: 0.8rem;
+  color: black;
+}
+
+.summary-description{
+    font-size: 2rem;
+    line-height: 1.15;
+    font-weight: bolder;
+    margin-top: 1.8rem;
+    text-overflow: ellipsis;
+}
+
+.stats{
+    line-height: 1;
+    font-size: 7rem;
+    margin-top: 0;
+    margin-bottom: 3%;
+    font-weight: bolder;
+}

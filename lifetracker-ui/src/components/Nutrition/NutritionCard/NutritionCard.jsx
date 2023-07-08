@@ -5,8 +5,8 @@ export default function NutritionCard({ nutrition }) {
   return (
     <div className="nutrition-card">
      <header className="nutrition-header">
-     {nutrition.imageSrc ? (
-        <img className="nutrition-image" src={nutrition.imageSrc} />
+     {nutrition.imageurl ? (
+        <img className="nutrition-image" src={nutrition.imageurl} />
       ) : (
         <div className="nutrition-image">
             {nutrition.name.charAt(0)}

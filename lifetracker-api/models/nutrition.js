@@ -14,7 +14,17 @@ class Nutrition {
   static async fetchAvgDailyCalories(userId){
     const userNutritionData = (await this.fetchUserNutritionData(userId)).nutritions
     if(userNutritionData.length === 0) return 0
-    // const today = 
+    const today = `${userNutritionData[0].createdat}`.split(" ", 4).join(" ")
+    let count = 0
+    const total = userNutritionData.reduce((acc, nutrition) => {
+      if(`${nutrition.createdat}`.split(" ", 4).join(" ") === today){
+        acc += parseFloat(nutrition.calories)
+        count += 1
+      }
+      return acc
+    }, 0)
+    return {totalDailyCalories: total, avgDailyCalories: total/count}
+    
   }
 
   static async addNutrition(userId, nutritionData) {
@@ -34,7 +44,7 @@ class Nutrition {
       nutritionData.name,
       nutritionData.category,
       nutritionData.calories,
-      nutritionData.imageurl,
+      nutritionData.imageUrl,
     ]);
     return { nutrition: newNutritionEntry.rows[0] };
   }
