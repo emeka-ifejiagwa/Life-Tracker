@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function NutritionOverview({ appState, setAppState }) {
-  const url = "http://life-tracker-uj12.onrender.com/nutrition/";
+  const url = "https://life-tracker-uj12.onrender.com/nutrition/";
   const navigate = useNavigate()
   useEffect(() => {
     axios

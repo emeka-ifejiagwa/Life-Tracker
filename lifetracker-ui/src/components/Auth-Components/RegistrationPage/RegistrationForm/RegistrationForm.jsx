@@ -20,7 +20,7 @@ export default function RegistrationForm({
   const [errorMessage, setErrorMessage] = useState(""); // handles input validation message
   const navigate = useNavigate()
 
-  const url = `http://life-tracker-uj12.onrender.com/auth/register`;
+  const url = `https://life-tracker-uj12.onrender.com/auth/register`;
 
   const handleChange = (event) => {
     setRegistrationInfo({

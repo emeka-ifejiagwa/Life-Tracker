@@ -15,7 +15,7 @@ export default function NutritionForm({ appState, setAppState }) {
   const [errorMessage, setErrorMessage] = useState(""); // handles input validation message
   const navigate = useNavigate();
 
-  const url = `http://life-tracker-uj12.onrender.com/nutrition`;
+  const url = `https://life-tracker-uj12.onrender.com/nutrition`;
 
   const handleChange = (event) => {
     setNutritionData({
