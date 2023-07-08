@@ -14,7 +14,7 @@ export default function LoginForm({appState, setAppState}) {
   const [errorMessage, setErrorMessage] = useState(""); // handles input validation message
   const navigate = useNavigate()
 
-  const url = `http://localhost:3001/auth/login`;
+  const url = `http://life-tracker-uj12.onrender.com/auth/login`;
 
   const handleChange = (event) => {
     setLoginDetails({

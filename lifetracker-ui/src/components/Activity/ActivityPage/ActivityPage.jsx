@@ -7,7 +7,7 @@ import ActivityFeed from "../Activity Feed/ActivityFeed";
 export default function ActivityPage({ appState, setAppState }) {
   const [activityData, setActivityData] = useState({})
   useEffect(() => {
-    const url = `http://localhost:3001/activity`;
+    const url = `http://life-tracker-uj12.onrender.com/activity`;
     axios
       .get(url, {
         headers: {

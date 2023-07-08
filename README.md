@@ -70,7 +70,7 @@ Implement any of the following features to improve the application:
 
 - [x] Create a `constants.js` file at the root of the project that exports the following variables:
   - [x] `PRODUCTION_API_BASE_URL` - set to whatever URL the production API is deployed at
-  - [x] `DEVELOPMENT_API_BASE_URL` - set to `"http://localhost:3001"` for development
+  - [x] `DEVELOPMENT_API_BASE_URL` - set to `"http://life-tracker-uj12.onrender.com"` for development
   - [x] `API_BASE_URL` - If `process.env.NODE_ENV` is `production`, set this to `PRODUCTION_API_BASE_URL`, otherwise set it to `DEVELOPMENT_API_BASE_URL`
 - [x] Create a `services` directory at the root of the project.
 - [x] Inside the `services` directory, create an `apiClient.js` file
