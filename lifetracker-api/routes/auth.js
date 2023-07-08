@@ -1,7 +1,7 @@
 const express = require("express");
 const authRouter = express.Router();
 const User = require("../models/user");
-const { generateToken } = require("../utils/tokens");
+const { generateToken, verifyToken } = require("../utils/tokens");
 
 authRouter.post("/register", async (req, res) => {
   try {
@@ -25,5 +25,17 @@ authRouter.post("/login", async (req, res) => {
     res.status(401).json({ message: error.message });
   }
 });
+
+authRouter.post("/me", async (req, res) => {
+  try {
+    const user = verifyToken(req.headers.authorization?.split(" ")[1])
+    res.status(200).json({user});
+  } catch (error) {
+    console.error(error)
+    res.status(401).json({ message: error.message });
+  }
+});
+
+
 
 module.exports = authRouter;
