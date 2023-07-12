@@ -2,7 +2,7 @@ import { MdOutlineAccountCircle } from "react-icons/md";
 import { IconContext } from "react-icons";
 import "./UserInfo.css";
 
-export default function UserInfo({followerCount, followingCount}) {
+export default function UserInfo({followerCount, followingCount, username}) {
   return (
     <header className="user-info-header">
       <div className="user-name-container">
@@ -14,7 +14,7 @@ export default function UserInfo({followerCount, followingCount}) {
           style={{ padding: "0", margin: "0" }}
         />
       </IconContext.Provider>
-      <p>Username here</p>
+      <p>{username}</p>
       </div>
       {/* <div className="user-info-count"> */}
       <div className="follower-count">

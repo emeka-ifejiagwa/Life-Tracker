@@ -43,7 +43,7 @@ export default function FollowersPage({appState, setAppState}) {
   return appState.isAuthenticated? (
     <div className="user-info-fixed">
       <div className="user-info-container">
-      <UserInfo followerCount={followInfo.followerCount} followingCount={followInfo.followingCount}/>
+      <UserInfo followerCount={followInfo.followerCount} followingCount={followInfo.followingCount} username={appState.user.username}/>
       <div className="follow-div">
         <table className="user-table">
           <tr>
