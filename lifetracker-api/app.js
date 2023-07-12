@@ -4,7 +4,7 @@ const activityRouter = require("./routes/activity")
 require("colors")
 const morgan = require("morgan")
 const cors = require("cors")
-const { authenticateToken } = require("./middleware/security")
+const followersRoute = require("./routes/followers")
 const nutritionRouter = require("./routes/nutrition")
 
 const app = express()
@@ -15,5 +15,6 @@ app.use(express.json())
 app.use("/auth", authRouter)
 app.use("/activity", activityRouter)
 app.use("/nutrition", nutritionRouter)
+app.use("/followers", followersRoute)
 
 module.exports = app

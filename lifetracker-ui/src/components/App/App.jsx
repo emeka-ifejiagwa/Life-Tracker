@@ -8,6 +8,7 @@ import axios from "axios";
 import LandingPage from "../LandingPage/LandingPage";
 import ActivityPage from "../Activity/ActivityPage/ActivityPage";
 import NutritionPage from "../Nutrition/NutritionPage/NutritionPage";
+import FollowersPage from "../FollowersPage/FollowersPage";
 
 function App() {
   /* 
@@ -47,6 +48,12 @@ function App() {
             path="/nutrition/*"
             element={
               <NutritionPage appState={appState} setAppState={setAppState} />
+            }
+          />
+          <Route
+            path="/follow/"
+            element={
+              <FollowersPage appState={appState} setAppState={setAppState} />
             }
           />
           <Route

@@ -47,6 +47,12 @@ class User {
     ]);
     return result.rows[0];
   }
+
+  static async getAllUsers(){
+    const query = "SELECT * from users;";
+    const users = (await db.query(query)).rows
+    return users.map(user => ({created_at: user.created_at, username: user.username, id: user.id }))
+  }
 }
 
 module.exports = User;

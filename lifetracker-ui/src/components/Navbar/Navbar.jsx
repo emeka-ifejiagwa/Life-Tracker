@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import NavLink from "./NavLink/NavLink";
 import "./Navbar.css";
 import { TbHealthRecognition } from "react-icons/tb";
+import { MdOutlineAccountCircle } from "react-icons/md"
 import { IconContext } from "react-icons";
 
 export default function Navbar({ appState, setAppState }) {
@@ -20,6 +21,10 @@ export default function Navbar({ appState, setAppState }) {
     navigate("/");
   };
 
+  const handleAccount = (event) => {
+
+  }
+
   return (
     <nav className="navbar">
       (
@@ -27,7 +32,7 @@ export default function Navbar({ appState, setAppState }) {
         <div className="nav-categories">
           <Link to="/" style={{padding: "0", margin: "0"}} className="logo">
             <IconContext.Provider
-              value={{ color: "var(--button-color)", size: "3.5rem" }}
+              value={{ color: "var(--button-color)", size: "3rem" }}
             >
               <TbHealthRecognition
                 className="user-icon"
@@ -76,7 +81,7 @@ export default function Navbar({ appState, setAppState }) {
             />
           </div>
         ) : (
-          <div className="auth-area">
+          <div className="auth-area-logout">
             <NavLink
               to="/"
               linkClassName={"auth-link"}
@@ -84,6 +89,16 @@ export default function Navbar({ appState, setAppState }) {
               className="border-button"
               handleClick={handleClick}
             />
+            <Link to="/follow" className="logo">
+            <IconContext.Provider
+              value={{ color: "var(--button-color)", size: "3rem" }}
+            >
+              <MdOutlineAccountCircle
+                className="user-icon"
+                style={{ padding: "0", margin: "0" }}
+              />
+            </IconContext.Provider>
+            </Link>
           </div>
         )}
       </div>
