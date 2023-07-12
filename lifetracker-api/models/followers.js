@@ -18,6 +18,11 @@ class Followers{
        const result = await db.query("INSERT INTO followers (userid, followerid) VALUES ($1, $2) RETURNING*;", [followerId, userId])
        return result.rows[0]
     }
+
+    static async unfollow(userId, wasFollowedId){
+        const result = await db.query("DELETE FROM followers WHERE userid = $1 AND followerid = $2;", [wasFollowedId, userId])
+        return result.rows[0]
+    }
 }
 
 module.exports = Followers

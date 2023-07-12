@@ -20,8 +20,28 @@ export default function FollowersPage({appState, setAppState}) {
     }).then(res => setFollowInfo(res.data))
   }, [])
 
-  const handleClick = (event) => {
-    const url = "https://life-tracker-uj12.onrender.com/followers"
+  const handleFollow = (event) => {
+    const url = "https://life-tracker-uj12.onrender.com/followers/follow"
+    axios.post(url, {wasFollowedId: parseInt(event.target.name)}, {
+      headers: {
+        authorization: "Bearer " + localStorage.getItem("lifetracker_token"),
+      },
+    }).then(res => setFollowInfo(res.data))
+    .catch((error) => {
+      localStorage.clear();
+      setAppState({
+        user: {},
+        token: undefined,
+        isAuthenticated: false,
+        nutritions: [],
+        sleep: [],
+        exercise: [],
+      });
+    });
+  }
+
+  const handleUnfollow = (event) => {
+    const url = "https://life-tracker-uj12.onrender.com/followers/unfollow"
     axios.post(url, {wasFollowedId: parseInt(event.target.name)}, {
       headers: {
         authorization: "Bearer " + localStorage.getItem("lifetracker_token"),
@@ -61,11 +81,11 @@ export default function FollowersPage({appState, setAppState}) {
               </td>
               <td>
                 {followInfo.following.some(otherUser => parseInt(otherUser.userid) === parseInt(user.id)) ?
-                <button className="border-button" name={user.id} onClick={handleClick}>
+                <button className="border-button" name={user.id} onClick={handleUnfollow}>
               Unfollow
             </button>:
               
-             <button className="fill-button" name={user.id} onClick={handleClick}>
+             <button className="fill-button" name={user.id} onClick={handleFollow}>
              Follow
            </button>}
               </td>

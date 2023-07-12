@@ -13,7 +13,7 @@ followersRoute.get("/", authenticateToken, async (req, res) => {
     }
 })
 
-followersRoute.post("/", authenticateToken, async(req, res) => {
+followersRoute.post("/follow", authenticateToken, async(req, res) => {
     try{
         const id = res.locals.payload.id
         await Followers.addNew(id, req.body.wasFollowedId)
@@ -21,6 +21,17 @@ followersRoute.post("/", authenticateToken, async(req, res) => {
     } catch(error){
         console.error(error.message)
         res.send({message: "could not follow"})
+    }
+})
+
+followersRoute.post("/unfollow", authenticateToken, async(req, res) => {
+    try{
+        const id = res.locals.payload.id
+        await Followers.unfollow(id, req.body.wasFollowedId)
+        res.status(200).send(await Followers.getFollowersAndFollowing(id))
+    } catch(error){
+        console.error(error.message)
+        res.send({message: "could not unfollow"})
     }
 })
 
